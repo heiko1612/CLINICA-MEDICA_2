@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Clínica Salud Total - Atención médica de calidad con tecnología moderna y calidez humana.">
+  <title>Clínica Salud Total</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Clínica Salud Total</h1>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#profesionales">Profesionales</a></li>
+          <li><a href="#turnos">Turnos Online</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="container">
+      <h2>Tu salud, nuestra prioridad</h2>
+      <p>Atención médica con calidez humana y tecnología de vanguardia</p>
+      <a href="#turnos" class="btn">Solicitar Turno</a>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="container">
+      <h2>Sobre Nosotros</h2>
+      <p>Somos una clínica comprometida con el bienestar de nuestros pacientes...</p>
+    </div>
+  </section>
+
+  <section id="especialidades">
+    <div class="container">
+      <h2>Especialidades Médicas</h2>
+      <ul class="especialidades-lista">
+        <li>Clínica Médica</li>
+        <li>Pediatría</li>
+        <li>Ginecología</li>
+        <li>Cardiología</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="profesionales">
+    <div class="container">
+      <h2>Nuestros Profesionales</h2>
+      <div class="grid">
+        <div class="doctor-card">
+          <img src="doctor1.jpg" alt="Dra. María Pérez" />
+          <h3>Dra. María Pérez</h3>
+          <p>Cardióloga - Mat. 12345</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="turnos">
+    <div class="container">
+      <h2>Solicitá tu turno</h2>
+      <form id="form-turno">
+        <input type="text" name="nombre" placeholder="Nombre completo" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <select name="especialidad">
+          <option value="">Especialidad</option>
+          <option>Clínica Médica</option>
+          <option>Pediatría</option>
+          <option>Ginecología</option>
+          <option>Cardiología</option>
+        </select>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <h2>Contacto</h2>
+      <p>📍 Dirección: Calle Ficticia 123, Ciudad</p>
+      <p>📞 Teléfono: 011 1234-5678</p>
+      <p>📧 Email: contacto@clinicasalud.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Clínica Salud Total. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("form-turno").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nombre = e.target.nombre.value;
+      const email = e.target.email.value;
+      const especialidad = e.target.especialidad.value;
+
+      fetch("https://script.google.com/macros/s/AKfycbx3_WQgce1GSnUMEGCBl1bnX81Wr7YG0XR_zAKlptzHOLEU7kAomJ6CqtjUlUOSEeoQEA/exec", {
+        method: "POST",
+        body: JSON.stringify({
+          nombre: nombre,
+          email: email,
+          especialidad: especialidad
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert("Gracias por solicitar un turno. Nos pondremos en contacto pronto.");
+          e.target.reset();
+        })
+        .catch(error => {
+          alert("Hubo un error al enviar el formulario.");
+          console.error(error);
+        });
+    });
+  </script>
+</body>
+</html>
